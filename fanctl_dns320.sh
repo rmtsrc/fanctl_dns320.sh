@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 #
-#  Description: Script to get fan control working with DNS-320
+#  Description: Bash script to get fan control working with D-Link DNS-320
 #  Written by Johny Mnemonic
 #  @see http://forum.dsmg600.info/viewtopic.php?id=6522
 #
