@@ -5,6 +5,8 @@ Written by Johny Mnemonic
 Modified by: http://seb.flippence.net to provide support for 2x Samsung F4 EcoGreen 2TB 32MB 5400RPM 3.5 Inch SATA-II Internal Hard Drives (HD204UI)
 with longer cool down period and details command
 
+WARNING: This script is only designed to work with two of the Samsung drives listed above, you will need to change the diskX_temp() functions to fit your drive(s) if different
+
 More details see:
 * http://wiki.dns323.info/dns-320
 * http://nas-tweaks.net/devices/d-link-dns-320/
