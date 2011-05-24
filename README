@@ -1,6 +1,11 @@
-Description: Script to get fan control working with DNS-320
+Description: Bash script to get fan control working with D-Link DNS-320
 Written by Johny Mnemonic
 @see http://forum.dsmg600.info/viewtopic.php?id=6522
 
 Modified by: http://seb.flippence.net to provide support for 2x Samsung F4 EcoGreen 2TB 32MB 5400RPM 3.5 Inch SATA-II Internal Hard Drives (HD204UI)
 with longer cool down period and details command
+
+More details see:
+* http://wiki.dns323.info/dns-320
+* http://nas-tweaks.net/devices/d-link-dns-320/
+* http://nas-tweaks.net/85/installation-and-configuration-of-fanctl-for-fonz-fun_plug/
