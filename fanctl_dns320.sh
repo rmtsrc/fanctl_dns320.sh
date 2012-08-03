@@ -49,12 +49,12 @@ logcommand()
 
 disk1_temp()
     {
-	smartctl -d marvell --attributes /dev/sda | grep 194 | tail -c 28 | head -c 2
+	smartctl -d marvell --attributes /dev/sda | grep 194 | awk '{ print $10}'
     }
 
 disk2_temp()
     {
-    	smartctl -d marvell --attributes /dev/sdb | grep 194 | tail -c 28 | head -c 2
+    	smartctl -d marvell --attributes /dev/sdb | grep 194 | awk '{ print $10}'
     }
     
 system_temp()
