@@ -24,6 +24,8 @@ details_cmd="fancontrol_details"
 
 PERIOD=30
 LOGFILE=/var/log/fan.log
+# Set to 0 to only check the system temperature (and not the hard drives)
+CHECK_HDD_TEMP=1
 
 # SysHigh=55
 # SysLow=50
@@ -76,8 +78,14 @@ Fancontrol() {
         /bin/sleep $PERIOD
 
 	SYSTEM_TEMP=`system_temp`
-	DISK1_TEMP=`disk1_temp`
-	DISK2_TEMP=`disk2_temp`
+	if [ $CHECK_HDD_TEMP == 1 ]; then
+		DISK1_TEMP=`disk1_temp`
+		DISK2_TEMP=`disk2_temp`
+	else
+		DISK1_TEMP=0
+		DISK2_TEMP=0
+	fi
+
         LOG_TEMP="Sys: $SYSTEM_TEMP°C, HDD1: $DISK1_TEMP°C, HDD2: $DISK2_TEMP°C"
 
 	if [ $FAN == 'low' -o $FAN == 'high' -o $FAN == 'stop' ]; then
@@ -146,6 +154,7 @@ fancontrol_stop() {
     logcommand "Stopping DNS-320 Fancontrol daemon"
     kill -9 `cat /var/run/fancontrol.pid`
     rm /var/run/fancontrol.pid
+    nohup fan_control 0 c >/dev/null 2>/dev/null &
 }
     
 fancontrol_restart() {
@@ -168,6 +177,11 @@ fancontrol_details() {
 	echo " Hyst=$Hyst "
 	echo " SH=$SH, DH=$DH (high cool down) "
 	echo " SL=$SL, DL=$DL (low cool down) "
+	if [ $CHECK_HDD_TEMP == 1 ]; then
+		echo " Fan speed adjusting for HDD temperatures "
+	else
+		echo " Fan speed not adjusting for HDD temperatures "
+	fi
         echo " Current temperatures: Sys: `system_temp`°C, HDD1: `disk1_temp`°C, HDD2: `disk2_temp`°C "
 }
 
